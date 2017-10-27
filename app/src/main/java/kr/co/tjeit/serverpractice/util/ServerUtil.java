@@ -23,6 +23,51 @@ public class ServerUtil {
         void onResponse(JSONObject json);
     }
 
+    public static void register_post(final Context context, final int user_id, final String content, final JsonResponseHandler handler) {
+//        기능에 따라 매번 주소를 다르게 적어줘야함.
+        String url = BASE_URL + "mobile/register_post";
+
+//        기능을 사용하기 위해 필요한 데이터를 담는 부분.
+
+        Map<String, String> data = new HashMap<String, String>();
+        data.put("user_id", user_id + "");
+        data.put("text", content);
+
+
+        AsyncHttpRequest.post(context, url, data, true, new AsyncHttpRequest.HttpResponseHandler() {
+
+            @Override
+            public boolean onPrepare() {
+                return true;
+            }
+
+            @Override
+            public void onResponse(String response) {
+                System.out.println(response);
+                try {
+                    JSONObject json = new JSONObject(response);
+
+                    if (handler != null)
+                        handler.onResponse(json);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onCancelled() {
+
+            }
+
+        });
+    }
+
+
     public static void sign_In(final Context context, final String user_id, final String user_pw, final JsonResponseHandler handler) {
 //        기능에 따라 매번 주소를 다르게 적어줘야함.
         String url = BASE_URL + "mobile/sign_in";
@@ -66,7 +111,6 @@ public class ServerUtil {
 
         });
     }
-
 
 
     public static void signUp(final Context context, final String user_id, final String user_pw, final String name, final int gender, final JsonResponseHandler handler) {

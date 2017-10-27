@@ -5,19 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="kr.co.tjeit.serverpractice.MainActivity">
+    tools:context="kr.co.tjeit.serverpractice.MakePostActivity">
 
-    <Button
-        android:id="@+id/makePostBtn"
+    <EditText
+        android:id="@+id/contentEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="게시글 등록"/>
+        android:lines="3"/>
 
-    <ListView
-        android:id="@+id/postListView"
+    <Button
+        android:id="@+id/okBtn"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:text="등록"/>
 
-    </ListView>
 
 </LinearLayout>
