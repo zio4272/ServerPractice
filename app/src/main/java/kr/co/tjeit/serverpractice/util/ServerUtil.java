@@ -24,13 +24,14 @@ public class ServerUtil {
     }
 
 
-    public static void absent(final Context context, final String reson, final JsonResponseHandler handler) {
+    public static void absent(final Context context, final String absentdate, final String reson, final JsonResponseHandler handler) {
 //        기능에 따라 매번 주소를 다르게 적어줘야함.
         String url = BASE_URL + "lm/absent";
 
 //        기능을 사용하기 위해 필요한 데이터를 담는 부분.
 
         Map<String, String> data = new HashMap<String, String>();
+        data.put("absentdate", absentdate);
         data.put("reson", reson);
 
 

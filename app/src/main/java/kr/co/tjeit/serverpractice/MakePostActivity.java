@@ -8,6 +8,8 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 
+import java.util.Calendar;
+
 import kr.co.tjeit.serverpractice.util.ServerUtil;
 
 public class MakePostActivity extends BaseActivity {
@@ -31,7 +33,7 @@ public class MakePostActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
 
-                ServerUtil.absent(mContext, contentEdt.getText().toString(), new ServerUtil.JsonResponseHandler() {
+                ServerUtil.absent(mContext, Calendar.getInstance().getTime().toString(),contentEdt.getText().toString(), new ServerUtil.JsonResponseHandler() {
                     @Override
                     public void onResponse(JSONObject json) {
 
