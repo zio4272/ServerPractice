@@ -24,7 +24,7 @@ public class ServerUtil {
     }
 
 
-    public static void absent(final Context context, final String absentdate, final String reson, final JsonResponseHandler handler) {
+    public static void absent(final Context context, final String absentdate, final String reson, final int student_id, final int lecture_id, final JsonResponseHandler handler) {
 //        기능에 따라 매번 주소를 다르게 적어줘야함.
         String url = BASE_URL + "lm/absent";
 
@@ -33,6 +33,8 @@ public class ServerUtil {
         Map<String, String> data = new HashMap<String, String>();
         data.put("absentdate", absentdate);
         data.put("reson", reson);
+        data.put("student_id", student_id+"");
+        data.put("lecture_id", lecture_id+"");
 
 
         AsyncHttpRequest.post(context, url, data, true, new AsyncHttpRequest.HttpResponseHandler() {
@@ -69,7 +71,7 @@ public class ServerUtil {
     }
 
 
-    public static void register_post(final Context context, final int user_id , final String content, final JsonResponseHandler handler) {
+    public static void register_post(final Context context, final int user_id, final String content, final JsonResponseHandler handler) {
 //        기능에 따라 매번 주소를 다르게 적어줘야함.
         String url = BASE_URL + "lm/post_list";
 

@@ -20,6 +20,8 @@ public class LoginActivity extends AppCompatActivity {
     private android.widget.EditText idEdt;
     private android.widget.EditText pwEdt;
 
+    public static int loginId = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             if(json.getBoolean("result")) {
                                 Toast.makeText(LoginActivity.this, "로그인 한 사용자 : " + json.getJSONObject("student").getString("name"), Toast.LENGTH_SHORT).show();
+                                loginId = json.getJSONObject("student").getInt("id");
                                 
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);

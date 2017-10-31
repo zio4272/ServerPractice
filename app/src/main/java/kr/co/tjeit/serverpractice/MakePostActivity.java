@@ -24,6 +24,9 @@ public class MakePostActivity extends BaseActivity {
         bindViews();
         setupEvent();
         setValues();
+
+
+
     }
 
     @Override
@@ -33,7 +36,7 @@ public class MakePostActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
 
-                ServerUtil.absent(mContext, Calendar.getInstance().getTime().toString(),contentEdt.getText().toString(), new ServerUtil.JsonResponseHandler() {
+                ServerUtil.absent(mContext, Calendar.getInstance().toString(),contentEdt.getText().toString(), LoginActivity.loginId,1, new ServerUtil.JsonResponseHandler() {
                     @Override
                     public void onResponse(JSONObject json) {
 
