@@ -31,7 +31,7 @@ public class MakePostActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
 
-                ServerUtil.register_post(mContext, 1, contentEdt.getText().toString(), new ServerUtil.JsonResponseHandler() {
+                ServerUtil.absent(mContext, contentEdt.getText().toString(), new ServerUtil.JsonResponseHandler() {
                     @Override
                     public void onResponse(JSONObject json) {
 

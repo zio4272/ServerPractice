@@ -25,26 +25,32 @@
         android:layout_height="wrap_content"
         android:hint="이름 입력" />
 
-    <RadioGroup
+    <EditText
+        android:id="@+id/phoneEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:hint="전번 입력" />
 
-        <RadioButton
-            android:id="@+id/man"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="남성" />
+    <!--<RadioGroup-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
 
-        <RadioButton
-            android:checked="true"
-            android:id="@+id/woman"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="여성" />
+        <!--<RadioButton-->
+            <!--android:id="@+id/man"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="남성" />-->
+
+        <!--<RadioButton-->
+            <!--android:checked="true"-->
+            <!--android:id="@+id/woman"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="여성" />-->
 
 
-    </RadioGroup>
+    <!--</RadioGroup>-->
 
     <Button
         android:id="@+id/signBtn"

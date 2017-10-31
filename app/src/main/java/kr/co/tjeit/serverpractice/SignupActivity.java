@@ -19,26 +19,27 @@ public class SignupActivity extends AppCompatActivity {
     private android.widget.RadioButton man;
     private android.widget.RadioButton woman;
     private android.widget.Button signBtn;
+    private EditText phoneEdt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        this.phoneEdt = (EditText) findViewById(R.id.phoneEdt);
         this.signBtn = (Button) findViewById(R.id.signBtn);
-        this.woman = (RadioButton) findViewById(R.id.woman);
-        this.man = (RadioButton) findViewById(R.id.man);
+//        this.woman = (RadioButton) findViewById(R.id.woman);
+//        this.man = (RadioButton) findViewById(R.id.man);
         this.nameEdt = (EditText) findViewById(R.id.nameEdt);
         this.pwEdt = (EditText) findViewById(R.id.pwEdt);
         this.idEdt = (EditText) findViewById(R.id.idEdt);
 
-        final int genderValue = man.isChecked() ? 0 : 1;
 
         signBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
-                ServerUtil.signUp(SignupActivity.this, idEdt.getText().toString(), pwEdt.getText().toString(), nameEdt.getText().toString(), genderValue, new ServerUtil.JsonResponseHandler() {
+                ServerUtil.sign_Up(SignupActivity.this, idEdt.getText().toString(), pwEdt.getText().toString(), nameEdt.getText().toString(), phoneEdt.getText().toString(), new ServerUtil.JsonResponseHandler() {
                     @Override
                     public void onResponse(JSONObject json) {
 

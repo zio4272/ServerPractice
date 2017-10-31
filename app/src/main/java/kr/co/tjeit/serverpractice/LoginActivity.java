@@ -49,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         try {
                             if(json.getBoolean("result")) {
+                                Toast.makeText(LoginActivity.this, "로그인 한 사용자 : " + json.getJSONObject("student").getString("name"), Toast.LENGTH_SHORT).show();
                                 
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
