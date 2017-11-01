@@ -1,5 +1,6 @@
 package kr.co.tjeit.serverpractice.data;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
@@ -19,9 +20,19 @@ public class Student implements Serializable {
 
     public static Student getStudentFromJSON(JSONObject jsonObject) {
 
-        Student std = new Student();
+        Student s = new Student();
 
-        return std;
+        try {
+            s.setId(jsonObject.getInt("id"));
+            s.setLoginId(jsonObject.getString("loginId"));
+            s.setName(jsonObject.getString("name"));
+            s.setPhone(jsonObject.getString("phone"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        return s;
 
     }
 

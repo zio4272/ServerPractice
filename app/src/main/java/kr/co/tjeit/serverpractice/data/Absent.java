@@ -1,5 +1,6 @@
 package kr.co.tjeit.serverpractice.data;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
@@ -25,6 +26,16 @@ public class Absent implements Serializable {
 
     public static Absent getAbsentFromJSON(JSONObject jsonObject) {
         Absent abs = new Absent();
+
+        try {
+            abs.id = jsonObject.getInt("id");
+//            날짜파싱 필요함
+//            abs.absentDate = jsonObject.getInt("id");
+            abs.reason = jsonObject.getString("reson");
+            abs.student_id = jsonObject.getInt("student_id");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         return abs;
 

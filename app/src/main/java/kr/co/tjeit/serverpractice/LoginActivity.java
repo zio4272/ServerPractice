@@ -11,9 +11,11 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import kr.co.tjeit.serverpractice.data.Student;
+import kr.co.tjeit.serverpractice.util.ContextUtil;
 import kr.co.tjeit.serverpractice.util.ServerUtil;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     private android.widget.Button button;
     private Button signupBtn;
@@ -26,10 +28,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        this.pwEdt = (EditText) findViewById(R.id.pwEdt);
-        this.idEdt = (EditText) findViewById(R.id.idEdt);
-        this.signupBtn = (Button) findViewById(R.id.signupBtn);
-        this.button = (Button) findViewById(R.id.button);
+        bindViews();
+        setupEvent();
+        setValues();
 
 
 
@@ -41,23 +42,26 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                ServerUtil.sign_In(LoginActivity.this, idEdt.getText().toString(), pwEdt.getText().toString(), new ServerUtil.JsonResponseHandler() {
+                ServerUtil.sign_In(mContext, idEdt.getText().toString(), pwEdt.getText().toString(), new ServerUtil.JsonResponseHandler() {
                     @Override
                     public void onResponse(JSONObject json) {
 
                         try {
                             if(json.getBoolean("result")) {
-                                Toast.makeText(LoginActivity.this, "로그인 한 사용자 : " + json.getJSONObject("student").getString("name"), Toast.LENGTH_SHORT).show();
-                                loginId = json.getJSONObject("student").getInt("id");
-                                
+
+                                ContextUtil.loginStudent = Student.getStudentFromJSON(json.getJSONObject("student"));
+
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
                                 finish();
-                                
+
                             }
                             else {
                                 Toast.makeText(LoginActivity.this, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show();
@@ -72,6 +76,25 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    @Override
+    public void setupEvent() {
+
+    }
+
+    @Override
+    public void setValues() {
+
+    }
+
+    @Override
+    public void bindViews() {
+        this.pwEdt = (EditText) findViewById(R.id.pwEdt);
+        this.idEdt = (EditText) findViewById(R.id.idEdt);
+        this.signupBtn = (Button) findViewById(R.id.signupBtn);
+        this.button = (Button) findViewById(R.id.button);
 
     }
 }

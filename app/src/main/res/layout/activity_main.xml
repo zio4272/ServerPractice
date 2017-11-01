@@ -11,7 +11,7 @@
         android:id="@+id/makePostBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="게시글 등록"/>
+        android:text="결석사유 등록"/>
 
     <ListView
         android:id="@+id/postListView"
