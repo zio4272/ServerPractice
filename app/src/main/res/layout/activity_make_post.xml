@@ -9,6 +9,7 @@
 
     <EditText
         android:id="@+id/contentEdt"
+        android:hint="결석 사유를 입력해 주세요."
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:lines="3"/>
