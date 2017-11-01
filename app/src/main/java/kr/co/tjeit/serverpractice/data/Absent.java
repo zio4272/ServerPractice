@@ -33,6 +33,8 @@ public class Absent implements Serializable {
 //            abs.absentDate = jsonObject.getInt("id");
             abs.reason = jsonObject.getString("reson");
             abs.student_id = jsonObject.getInt("student_id");
+
+            abs.student = Student.getStudentFromJSON(jsonObject.getJSONObject("student"));
         } catch (JSONException e) {
             e.printStackTrace();
         }

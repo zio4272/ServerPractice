@@ -44,6 +44,7 @@ public class AbsentAdapter extends ArrayAdapter<Absent> {
             TextView contetTxt = row.findViewById(R.id.contetTxt);
 
             contetTxt.setText(data.getReason());
+            writerNameTxt.setText(data.getStudent().getName());
 
         }
         return row;
